@@ -10,8 +10,8 @@ COPY index.html app.js server.py ./
 
 RUN useradd --create-home --uid 10001 appuser
 
-ENV PORT=8099
-EXPOSE 8099
+ENV PORT=8098
+EXPOSE 8098
 
 USER appuser
 
