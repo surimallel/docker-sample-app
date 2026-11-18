@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10141d">
+    <title>Docker Sample App | Container Command Center</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Docker Sample App home">
+        <span class="brand-mark" aria-hidden="true">▰</span>
+        <span>DOCKER <span class="brand-muted">SAMPLE APP</span></span>
+      </a>
+      <span class="live-indicator"><span class="live-dot"></span> CONTAINER ONLINE</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR FIRST CONTAINER</p>
+          <h1>One image.<br><span class="gradient-text">One running app.</span></h1>
+          <p class="hero-description">
+            A tiny web app with a big idea: learn how Dockerfile instructions
+            package code and get it running in a container.
+          </p>
+          <a class="button button-primary" href="#dockerfile">
+            Explore the Dockerfile <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <div class="terminal" aria-label="Container terminal example">
+          <div class="terminal-bar">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <span>terminal — docker</span>
+            <span class="terminal-menu" aria-hidden="true">•••</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> docker build -t my-first-app .</p>
+            <p class="terminal-muted">Successfully built <span>your-image</span></p>
+            <p class="terminal-spacer"><span class="prompt">$</span> docker run -p 8099:8099 my-first-app</p>
+            <p class="terminal-success"><span class="success-dot"></span> Serving app on 0.0.0.0:8099</p>
+            <div class="terminal-url">↳ <span>http://localhost:8099</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="App runtime details">
+        <div class="status-item">
+          <span class="status-icon status-icon-blue" aria-hidden="true">⌘</span>
+          <div><span class="status-label">APP STATUS</span><strong>Up and running</strong></div>
+        </div>
+        <div class="status-item">
+          <span class="status-icon status-icon-green" aria-hidden="true">↗</span>
+          <div><span class="status-label">LOCAL ADDRESS</span><a href="http://localhost:8099">localhost:8099</a></div>
+        </div>
+        <div class="status-item">
+          <span class="status-icon status-icon-purple" aria-hidden="true">▤</span>
+          <div><span class="status-label">BUILT WITH</span><strong>Python · Docker</strong></div>
+        </div>
+      </section>
+
+      <section class="learning-section" id="dockerfile">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> INSIDE THE IMAGE</p>
+            <h2>Meet your <span class="gradient-text">Dockerfile.</span></h2>
+          </div>
+          <p class="section-intro">Each instruction adds a layer or sets a default that shapes how your app is built and launched.</p>
+        </div>
+        <div class="command-grid">
+          <article class="command-card">
+            <span class="command-number">01</span><span class="command-tag tag-blue">BASE</span>
+            <h3>FROM</h3><p>Choose the starting image. This demo builds on a small Python image.</p>
+            <code>FROM python:3.12-slim</code>
+          </article>
+          <article class="command-card">
+            <span class="command-number">02</span><span class="command-tag tag-orange">FILES</span>
+            <h3>ADD <span class="plus">+</span> COPY</h3><p>Put app files into the image. ADD can unpack archives; COPY is the go-to for regular files.</p>
+            <code>ADD styles.css ./<br>COPY index.html app.js server.py ./</code>
+          </article>
+          <article class="command-card">
+            <span class="command-number">03</span><span class="command-tag tag-purple">SETUP</span>
+            <h3>WORKDIR <span class="plus">+</span> RUN</h3><p>Set the working folder, then prepare the image with a dedicated app user.</p>
+            <code>WORKDIR /app<br>RUN useradd ... appuser</code>
+          </article>
+          <article class="command-card">
+            <span class="command-number">04</span><span class="command-tag tag-green">CONFIG</span>
+            <h3>ENV <span class="plus">+</span> USER</h3><p>Set the default server port and run the app without root privileges.</p>
+            <code>ENV PORT=8099<br>USER appuser</code>
+          </article>
+          <article class="command-card">
+            <span class="command-number">05</span><span class="command-tag tag-pink">NETWORK</span>
+            <h3>EXPOSE</h3><p>Document the port the app listens on. Publish it with <code class="inline-code">docker run -p</code>.</p>
+            <code>EXPOSE 8099</code>
+          </article>
+          <article class="command-card">
+            <span class="command-number">06</span><span class="command-tag tag-yellow">START</span>
+            <h3>ENTRYPOINT <span class="plus">+</span> CMD</h3><p>ENTRYPOINT starts the server; CMD provides its default host argument.</p>
+            <code>ENTRYPOINT ["python", "server.py"]<br>CMD ["--host", "0.0.0.0"]</code>
+          </article>
+        </div>
+      </section>
+
+      <section class="run-section">
+        <div class="run-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR TURN</p>
+            <h2>Build it. <span class="gradient-text">Run it.</span></h2>
+          </div>
+          <p>Run both commands from the folder containing the Dockerfile.</p>
+        </div>
+        <div class="run-card">
+          <div class="run-step"><span>1</span><div><span class="status-label">BUILD THE IMAGE</span><code>docker build -t docker-sample-app .</code></div></div>
+          <div class="run-step"><span>2</span><div><span class="status-label">START THE CONTAINER</span><code>docker run --rm -p 8099:8099 docker-sample-app</code></div></div>
+          <button class="copy-button" id="copy-command" type="button" aria-label="Copy build and run commands">
+            <span aria-hidden="true">▣</span> <span id="copy-label">COPY COMMANDS</span>
+          </button>
+        </div>
+        <p class="run-note"><span aria-hidden="true">↗</span> Then open <a href="http://localhost:8099">http://localhost:8099</a> in your browser.</p>
+      </section>
+    </main>
+
+    <footer><span class="brand-mark" aria-hidden="true">▰</span> A hands-on Docker demo for curious minds.</footer>
+  </body>
+</html>
