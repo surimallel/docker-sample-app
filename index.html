@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10141d">
-    <title>Docker Calculator</title>
+    <title>Digital Payment Demo</title>
     <link rel="stylesheet" href="/styles.css">
-    <script src="/app.js" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -14,56 +13,47 @@
         <span class="brand-mark" aria-hidden="true">▰</span>
         <span>DOCKER <span class="brand-muted">SAMPLE APP</span></span>
       </a>
-      <span class="live-indicator"><span class="live-dot"></span> CALCULATOR · PORT 8099</span>
+      <span class="live-indicator"><span class="live-dot"></span> PAYMENT DEMO · PORT 8097</span>
     </header>
 
     <main>
-      <section class="intro">
+      <section class="showcase" aria-labelledby="page-title">
         <p class="eyebrow"><span class="eyebrow-line"></span> A HANDS-ON DOCKER DEMO</p>
-        <h1>Quick math.<br><span class="gradient-text">One container.</span></h1>
+        <div class="payment-art">
+          <svg class="payment-image" viewBox="0 0 240 240" role="img" aria-labelledby="payment-title payment-description">
+            <title id="payment-title">Digital payment illustration</title>
+            <desc id="payment-description">A payment card with a confirmation check mark in a blue and teal badge.</desc>
+            <defs>
+              <linearGradient id="tile-gradient" x1="30" y1="25" x2="210" y2="220" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#557df0"/>
+                <stop offset="1" stop-color="#3949a8"/>
+              </linearGradient>
+              <linearGradient id="check-gradient" x1="145" y1="145" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6ce2c1"/>
+                <stop offset="1" stop-color="#37b99e"/>
+              </linearGradient>
+            </defs>
+            <rect x="14" y="14" width="212" height="212" rx="54" fill="url(#tile-gradient)"/>
+            <circle cx="120" cy="120" r="77" fill="#ffffff" fill-opacity=".08"/>
+            <rect x="54" y="70" width="132" height="94" rx="16" fill="#f7f9ff"/>
+            <path d="M54 91c0-2.2 1.8-4 4-4h124c2.2 0 4 1.8 4 4v13H54V91Z" fill="#dce6ff"/>
+            <rect x="70" y="121" width="34" height="9" rx="4.5" fill="#9eadd0"/>
+            <rect x="70" y="139" width="57" height="7" rx="3.5" fill="#c0cbe0"/>
+            <circle cx="171" cy="166" r="35" fill="url(#check-gradient)" stroke="#3949a8" stroke-width="7"/>
+            <path d="m155 166 11 11 22-24" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+          </svg>
+        </div>
+        <h1 id="page-title">Digital payment <span class="gradient-text">demo</span></h1>
         <p class="intro-copy">
-          Try the calculator, then show students how Docker packages a web app
-          and runs it consistently in a container.
+          This sample displays an original payment-themed illustration.
+          It is a static web page running inside your Docker container.
         </p>
-      </section>
-
-      <section class="calculator" aria-label="Calculator">
-        <div class="calculator-top">
-          <span class="calculator-label">STANDARD CALCULATOR</span>
-          <span class="calc-ready"><span></span> READY</span>
-        </div>
-        <div class="screen">
-          <p class="expression" id="expression" aria-hidden="true">&nbsp;</p>
-          <output class="display" id="display" aria-live="polite" aria-atomic="true">0</output>
-        </div>
-        <div class="keypad">
-          <button class="key key-utility" type="button" data-action="clear" aria-label="Clear all">AC</button>
-          <button class="key key-utility" type="button" data-action="delete" aria-label="Delete last digit">DEL</button>
-          <button class="key key-operator" type="button" data-operator="/" aria-label="Divide">÷</button>
-          <button class="key" type="button" data-digit="7">7</button>
-          <button class="key" type="button" data-digit="8">8</button>
-          <button class="key" type="button" data-digit="9">9</button>
-          <button class="key key-operator" type="button" data-operator="*" aria-label="Multiply">×</button>
-          <button class="key" type="button" data-digit="4">4</button>
-          <button class="key" type="button" data-digit="5">5</button>
-          <button class="key" type="button" data-digit="6">6</button>
-          <button class="key key-operator" type="button" data-operator="-" aria-label="Subtract">−</button>
-          <button class="key" type="button" data-digit="1">1</button>
-          <button class="key" type="button" data-digit="2">2</button>
-          <button class="key" type="button" data-digit="3">3</button>
-          <button class="key key-operator" type="button" data-operator="+" aria-label="Add">+</button>
-          <button class="key key-utility" type="button" data-action="sign" aria-label="Change sign">±</button>
-          <button class="key key-zero" type="button" data-digit="0">0</button>
-          <button class="key" type="button" data-action="decimal" aria-label="Decimal point">.</button>
-          <button class="key key-equals" type="button" data-action="equals" aria-label="Equals">=</button>
-        </div>
-        <p class="keyboard-hint">Keyboard works too: <kbd>0–9</kbd> numbers · <kbd>+</kbd> <kbd>−</kbd> <kbd>*</kbd> <kbd>/</kbd> operations · <kbd>Enter</kbd> equals</p>
       </section>
 
       <aside class="docker-note">
         <span class="note-icon" aria-hidden="true">↗</span>
-        <p><strong>Running in Docker</strong><br>Build the image, start the container, then open <a href="http://localhost:8099">localhost:8099</a>.</p>
-        <code>docker run --rm -p 8099:8099 docker-sample-app</code>
+        <p><strong>Running in Docker</strong><br>Open <a href="http://localhost:8097">localhost:8097</a> to view this page.</p>
+        <code>docker run --rm -p 8097:8097 docker-sample-app</code>
       </aside>
     </main>
 

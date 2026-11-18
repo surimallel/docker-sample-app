@@ -6,12 +6,12 @@ LABEL org.opencontainers.image.description="A student-friendly Dockerfile demo"
 WORKDIR /app
 
 ADD styles.css ./styles.css
-COPY index.html app.js server.py ./
+COPY index.html server.py ./
 
 RUN useradd --create-home --uid 10001 appuser
 
-ENV PORT=8098
-EXPOSE 8098
+ENV PORT=8097
+EXPOSE 8097
 
 USER appuser
 

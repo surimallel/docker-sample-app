@@ -1,12 +1,9 @@
 :root {
   color-scheme: dark;
   --background: #10141d;
-  --surface: #171d28;
-  --border: #293341;
   --text: #f0f3f8;
   --muted: #929eaf;
-  --blue: #70a7ff;
-  --green: #64dba5;
+  --border: #293341;
 }
 
 * { box-sizing: border-box; }
@@ -18,7 +15,7 @@ body {
   flex-direction: column;
   margin: 0;
   background:
-    radial-gradient(ellipse at 50% 35%, rgba(42, 87, 155, .16), transparent 34rem),
+    radial-gradient(ellipse at 50% 40%, rgba(71, 100, 207, .17), transparent 34rem),
     var(--background);
   color: var(--text);
   font-family: "Segoe UI", Arial, sans-serif;
@@ -48,67 +45,49 @@ a { color: inherit; }
 
 .brand-mark { color: #6ea3ff; font-size: 21px; }
 .brand-muted { color: #93a0b2; font-weight: 500; }
-.live-indicator, .eyebrow, .calculator-label, .calc-ready, .keyboard-hint {
+.live-indicator, .eyebrow {
   font-family: Consolas, monospace;
   font-size: 10px;
   letter-spacing: .1em;
 }
 
 .live-indicator { display: flex; align-items: center; gap: 8px; color: #a4b0bf; }
-.live-dot, .calc-ready span { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px rgba(100, 219, 165, .65); }
-
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #64dba5; box-shadow: 0 0 12px rgba(100, 219, 165, .65); }
 main { width: min(100% - 40px, 1060px); margin: 0 auto; flex: 1; }
-.intro { padding: 47px 0 25px; text-align: center; }
+
+.showcase { display: flex; flex-direction: column; align-items: center; padding: 57px 0 22px; text-align: center; }
 .eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; color: #98a7bb; }
 .eyebrow-line { width: 19px; height: 1px; background: #6ca7ff; }
-h1 { margin: 17px 0 12px; font-size: clamp(38px, 6vw, 55px); line-height: 1.08; letter-spacing: -.055em; }
-.gradient-text { background: linear-gradient(100deg, #76adff 7%, #9a8bff 74%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.intro-copy { max-width: 465px; margin: 0 auto; color: #a5b0bf; font-size: 14px; line-height: 1.7; }
+h1 { margin: 16px 0 11px; font-size: clamp(32px, 5vw, 46px); line-height: 1.15; letter-spacing: -.05em; }
+.gradient-text { background: linear-gradient(100deg, #76adff 7%, #8bd9cf 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.intro-copy { max-width: 450px; margin: 0 auto; color: #a5b0bf; font-size: 14px; line-height: 1.7; }
 
-.calculator {
-  width: min(100%, 370px);
-  margin: 0 auto;
-  padding: 17px;
-  border: 1px solid #2c3747;
-  border-radius: 13px;
-  background: linear-gradient(150deg, rgba(28, 36, 49, .98), rgba(17, 23, 33, .98));
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .35), 0 0 40px rgba(79, 139, 255, .06);
+.payment-art {
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: 18px 0 4px;
+  border: 1px solid rgba(145, 165, 221, .15);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(33, 45, 70, .8), rgba(20, 27, 40, .9));
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .28), 0 0 50px rgba(80, 107, 214, .09);
 }
 
-.calculator-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 3px 14px; }
-.calculator-label { color: #8794a5; }
-.calc-ready { display: flex; align-items: center; gap: 7px; color: #84dcb0; font-size: 9px; }
-.calc-ready span { width: 6px; height: 6px; }
-.screen { min-height: 105px; display: flex; flex-direction: column; justify-content: end; align-items: flex-end; padding: 14px 12px 17px; border: 1px solid #283241; border-radius: 8px; background: #111720; }
-.expression { min-height: 18px; width: 100%; margin: 0 0 7px; color: #8c9aad; font-family: Consolas, monospace; font-size: 12px; text-align: right; overflow-wrap: anywhere; }
-.display { max-width: 100%; color: #f1f5fb; font-family: Consolas, monospace; font-size: clamp(32px, 8vw, 43px); font-variant-numeric: tabular-nums; letter-spacing: -.05em; overflow-wrap: anywhere; }
-.display.is-error { color: #ff8e9b; font-size: 24px; letter-spacing: 0; }
-.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; padding-top: 13px; }
-.key {
-  min-width: 0;
-  height: 54px;
-  border: 1px solid #2d3746;
-  border-radius: 7px;
-  background: #202936;
-  color: #e7edf5;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 19px;
-  cursor: pointer;
-  transition: background .15s, border-color .15s, transform .15s;
-}
-.key:hover { transform: translateY(-1px); border-color: #50627a; background: #293547; }
-.key:active { transform: translateY(0); }
-.key:focus-visible { outline: 2px solid #83adff; outline-offset: 2px; }
-.key-utility { background: #283343; color: #aebbd0; font-size: 14px; font-weight: 600; }
-.key-operator { border-color: #334866; background: #202f45; color: #91b8ff; font-size: 22px; }
-.key-operator:hover { border-color: #648ac3; background: #2a3e59; }
-.key-equals { border-color: #4f83dc; background: #538bf0; color: white; font-size: 23px; }
-.key-equals:hover { border-color: #83b0ff; background: #659af7; }
-.key-zero { grid-column: span 1; }
-.keyboard-hint { margin: 13px 2px 1px; color: #8290a2; font-size: 9px; line-height: 1.8; text-align: center; letter-spacing: 0; }
-kbd { padding: 2px 4px; border: 1px solid #354153; border-radius: 3px; background: #1c2531; color: #c4cfdd; font: inherit; }
+.payment-image { display: block; width: 74%; height: auto; filter: drop-shadow(0 16px 24px rgba(24, 34, 86, .35)); }
 
-.docker-note { width: min(100%, 720px); display: flex; align-items: center; gap: 13px; margin: 22px auto 46px; padding: 14px 17px; border: 1px solid #293849; border-radius: 8px; background: rgba(25, 34, 47, .7); }
+.docker-note {
+  width: min(100%, 720px);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 20px auto 44px;
+  padding: 14px 17px;
+  border: 1px solid #293849;
+  border-radius: 8px;
+  background: rgba(25, 34, 47, .7);
+}
+
 .note-icon { width: 30px; height: 30px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 7px; background: rgba(99, 150, 255, .12); color: #86afff; }
 .docker-note p { flex: 1; margin: 0; color: #98a5b5; font-size: 11px; line-height: 1.6; }
 .docker-note strong { color: #e0e7f0; font-size: 12px; }
@@ -124,7 +103,8 @@ footer .brand-mark { font-size: 15px; }
   .brand { gap: 7px; font-size: 9px; }
   .live-indicator { gap: 6px; font-size: 8px; }
   main { width: min(100% - 30px, 1060px); }
-  .intro { padding-top: 38px; }
+  .showcase { padding-top: 40px; }
+  .payment-art { width: min(100%, 290px); }
   .docker-note { align-items: flex-start; flex-wrap: wrap; margin-bottom: 30px; }
   .docker-note p { min-width: calc(100% - 50px); }
   .docker-note code { margin-left: 43px; overflow-wrap: anywhere; }

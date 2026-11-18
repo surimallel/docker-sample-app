@@ -10,14 +10,14 @@ Run these commands from the repository folder:
 
 ```powershell
 docker build -t docker-sample-app .
-docker run --rm -p 8099:8099 docker-sample-app
+docker run --rm -p 8097:8097 docker-sample-app
 ```
 
-Open [http://localhost:8099](http://localhost:8099) in a browser. Stop the
+Open [http://localhost:8097](http://localhost:8097) in a browser. Stop the
 container with `Ctrl+C`.
 
-The `-p 8099:8099` option maps port 8099 on your computer to port 8099 in the
-container. `EXPOSE 8099` in the Dockerfile documents the container port; it
+The `-p 8097:8097` option maps port 8097 on your computer to port 8097 in the
+container. `EXPOSE 8097` in the Dockerfile documents the container port; it
 does not publish the port by itself.
 
 ## Dockerfile instructions in this demo
@@ -27,11 +27,11 @@ does not publish the port by itself.
 - `ADD` places the stylesheet in the image. For a regular file, it behaves like
   `COPY`; `ADD` can also unpack local tar archives. Prefer `COPY` for ordinary
   files unless you need one of `ADD`'s extra behaviors.
-- `COPY` adds the page, browser script, and server to the image.
+- `COPY` adds the page and server to the image.
 - `RUN` creates a dedicated unprivileged user while building the image.
 - `ENV` sets the server's default port.
 - `USER` runs the server as that unprivileged user.
-- `EXPOSE` documents the port the server listens on.
+- `EXPOSE` documents port 8097, where the server listens.
 - `ENTRYPOINT` starts the Python server.
 - `CMD` supplies default arguments to the entrypoint. You can override them
   after the image name, for example:
